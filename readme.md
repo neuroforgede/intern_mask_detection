@@ -1,4 +1,6 @@
 # Mask-Classfier
+https://neuroforge.de/maskentraegererkennung-durch-neuronale-netzen-wie-ein-mvp-aussehen-kann/
+
 Based on: https://github.com/FurkanOM/tf-faster-rcnn
 
 # Usage
