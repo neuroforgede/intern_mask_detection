@@ -127,6 +127,11 @@ def get_dataset(name, split, data_dir="~/tensorflow_datasets"):
         dataset = tensorflow dataset split
         info = tensorflow dataset info
     """
+
+    data_dir = os.path.join(os.getcwd(),'data/VOC')
+    if not os.path.exists(data_dir):
+        os.makedirs(data_dir)
+
     assert split in ["train", "train+validation", "validation", "test"]
 
     dataset, info = tfds.load(name, split=split, data_dir=data_dir, with_info=True)

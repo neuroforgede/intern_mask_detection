@@ -13,9 +13,15 @@ def get_log_path(model_type, backbone="vgg16", custom_postfix=""):
         log_path = tensorboard log path, for example: "logs/rpn_mobilenet_v2/{date}"
     """
     if model_type == 'cnn':
-        return "logs/{}{}/{}".format(model_type, custom_postfix, datetime.now().strftime("%Y%m%d-%H%M%S"))
+        path = "logs/{}{}/{}".format(model_type, custom_postfix, datetime.now().strftime("%Y%m%d-%H%M%S"))
+        if not os.path.exists(path):
+            os.makedirs(path)
+        return path
     else:
-        return "logs/{}_{}{}/{}".format(model_type, backbone, custom_postfix, datetime.now().strftime("%Y%m%d-%H%M%S"))
+        path = "logs/{}_{}{}/{}".format(model_type, backbone, custom_postfix, datetime.now().strftime("%Y%m%d-%H%M%S"))
+        if not os.path.exists(path):
+            os.makedirs(path)
+        return path
 
 
 def get_model_path(model_type, backbone="vgg16"):
@@ -29,7 +35,6 @@ def get_model_path(model_type, backbone="vgg16"):
     main_path = os.path.join(os.getcwd(),'trained')
 
     if not os.path.exists(main_path):
-        print('make main_path')
         os.makedirs(main_path)
         
     if model_type == 'cnn':

@@ -68,7 +68,8 @@ def get_bbox_and_labels_from_one_image(img, image_index, img_size, pred_bboxes, 
 
 
 def main():
-    img_size = hyper_params["img_size"]
+    hyper_params_faster_rcnn = train_utils.get_hyper_params("mobilenet_v2")
+    img_size = hyper_params_faster_rcnn["img_size"]
     # loop over img_paths with batch_size
     steps = math.ceil(len(img_paths) / batch_size)
 
